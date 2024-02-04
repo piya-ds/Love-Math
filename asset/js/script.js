@@ -18,12 +18,22 @@ document.addEventListener("DOMContentLoaded", function(){
         })
         
     }
+
+    document.getElementById('answer-box').addEventListener('keydown',function(event){
+
+        if(event.key === 'Enter'){
+            checkAnswer();
+        }
+    })
     runGame('addition');
 })
 
 
 
 function runGame(gameType) {
+
+    document.getElementById('answer-box').value = "";
+    document.getElementById('answer-box').focus();
 
     // generate 2 random numbers
     let num1 = Math.floor(Math.random() * 25) + 1;
@@ -100,14 +110,14 @@ function calculateCorrectAnswer() {
 
 function incrementScore() {
 
-    let oldScore = parseInt(document.getElementById('score'));
+    let oldScore = parseInt(document.getElementById('score').innerText);
     document.getElementById('score').innerText = ++oldScore;
 }
 
 function incrementWrongAnswer() {
 
-    let incorrect = parseInt(document.getElementById('incorrect'));
-    document.getElementById('score').innerText = ++incorrect;
+    let incorrect = parseInt(document.getElementById('incorrect').innerText);
+    document.getElementById('incorrect').innerText = ++incorrect;
 }
 
 function displayAdditionQuestion(operand1, operand2) {
