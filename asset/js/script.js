@@ -99,7 +99,7 @@ function calculateCorrectAnswer() {
     }
     else if(operator === '/'){
         
-        return [operand1 /  operand2, "division"];
+        return [Math.floor(operand1 /  operand2), "division"];
     }
     else{
 
@@ -146,8 +146,8 @@ function displayMultiplyQuestion(operand1, operand2) {
 
 function displayDivisionQuestion(operand1, operand2) {
 
-    document.getElementById('operand1').innerText = operand1 > operand2 ? operand1 : operand2;
-    document.getElementById('operand2').innerText = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operand1').innerText = operand1 * operand2;
+    document.getElementById('operand2').innerText = operand2;
     document.getElementById('operator').innerText = "/";
     
 }
