@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
         button.addEventListener('click', function(){
 
             if(button.getAttribute('data-type') === "submit"){
-                alert('you clicked Submit');
+                checkAnswer();
             }
             else{
                 let gameType = button.getAttribute('data-type');
@@ -41,6 +41,19 @@ function runGame(gameType) {
 
 function checkAnswer() {
 
+    let userAnswer = parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    console.log(calculatedAnswer);
+    let isCorrect = userAnswer === calculatedAnswer[0];
+
+    if (isCorrect) {
+        alert("Hey! You got it right! :D");
+    } else {
+        alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+    }
+
+    runGame(calculatedAnswer[1]);
+
 }
 
 function calculateCorrectAnswer() {
@@ -51,7 +64,7 @@ function calculateCorrectAnswer() {
 
     if(operator === "+"){
 
-        return( operand1+operand2 , "addition");
+        return[operand1 + operand2 , "addition"] ;
     }else{
 
         alert(`Unimplemented operator: ${operator}`);
@@ -80,5 +93,9 @@ function displaySubtractQuestion() {
 }
 
 function displayMultiplyQuestion() {
+    
+}
+
+function displayDivisionQuestion() {
     
 }
